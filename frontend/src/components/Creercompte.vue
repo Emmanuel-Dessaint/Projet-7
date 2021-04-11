@@ -1,28 +1,40 @@
 <template>
     <div class="div_connexion">
         <h1 class="Connectez">Créer un compte</h1>
-        <form class="form" id="myForm">
+
+        <form class="form" id="login-form">
             <div class="div_1">
                 <label for="username">Adresse mail</label><br>
-                <input type="text" name="username" id="username"><br>
+                <input type="text" name="utilisateur"  id="username-field" v-model="username" ><br>
             </div>
             <div class="div_2">
                 <label for="username">Mot de passe</label><br>
-                <input type="text" name="username" id="password"><br>
+                <input type="password" name="mot de passe" id="password-field" v-model="password" ><br>
             </div>
-            <button class="boutonConnect" type="submit">Créer un compte</button>
+            <button @click.prevent="envoyerDonnées()" class="boutonConnect" type="submit">Se connecter</button>
         </form>   
     </div>
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
     name:"Creercompte",
-
-    // const myForm = document.getElementById('myForm')
-    // myForm.addEventListener('submit',function(event) {
-    // event.preventDefault()
-    // })
+    methods: {
+        envoyerDonnées() {
+            axios.post('http://localhost:3000/api/auth/signup', {
+                username:(this.username),
+                password:(this.password)
+            })
+            .then((response) => {
+                console.log(response);
+            }, (error) => {
+                console.log(error);
+            });
+            
+        },
+    },
 }
 </script>
 

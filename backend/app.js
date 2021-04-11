@@ -22,6 +22,8 @@ con.connect((err) => {
   console.log('Connection established');
 });
 
+
+
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content, Accept, Content-Type, Authorization');
@@ -34,8 +36,9 @@ app.use(bodyParser.json())
 app.use('/api/auth', userRoutes)
 module.exports = app
 
-con.end((err) => {
-  // The connection is terminated gracefully
-  // Ensures all remaining queries are executed
-  // Then sends a quit packet to the MySQL server.
-});
+
+// con.end((err) => {
+//   // The connection is terminated gracefully
+//   // Ensures all remaining queries are executed
+//   // Then sends a quit packet to the MySQL server.
+// });

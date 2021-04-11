@@ -20,10 +20,9 @@
 import axios from 'axios';
 
 export default {
+    name: "Connexion",
     methods: {
         envoyerDonnées() {
-            alert(this.username)
-            console.log(this.password)
             axios.post('http://localhost:3000/api/auth/login', {
                 FirstName:(this.username),
                 LastName:(this.password)
@@ -36,18 +35,6 @@ export default {
             
         },
     },
-  // Fetches posts when the component is created.
-  created() {
-    axios.post(`http://localhost:8080/#/`, {test:'message test'})
-    .then(response => {
-      // JSON responses are automatically parsed.
-      this.posts = response.data
-      console.log(response)
-    })
-    .catch(e => {
-      this.errors.push(e)
-    })
-  }
 }
 
 
