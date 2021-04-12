@@ -24,8 +24,8 @@ export default {
     methods: {
         envoyerDonnées() {
             axios.post('http://localhost:3000/api/auth/login', {
-                FirstName:(this.username),
-                LastName:(this.password)
+                username:(this.username),
+                password:(this.password)
             })
             .then((response) => {
                 console.log(response);
