@@ -11,7 +11,7 @@
                 <label for="username">Mot de passe</label><br>
                 <input type="password" name="mot de passe" id="password-field" v-model="password" ><br>
             </div>
-            <button @click.prevent="envoyerDonnées()" class="boutonConnect" type="submit">Se connecter</button>
+            <button @click.prevent="envoyerDonnées()" class="boutonConnect" type="submit">Créer un compte</button>
         </form>   
     </div>
 </template>
@@ -29,6 +29,9 @@ export default {
             })
             .then((response) => {
                 console.log(response);
+                if (response.status === 201) {
+                    console.log("le if a bien marché")
+                }
             }, (error) => {
                 console.log(error);
             });

@@ -8,7 +8,7 @@
                 <input type="text" name="utilisateur"  id="username-field" v-model="username" ><br>
             </div>
             <div class="div_2">
-                <label for="username">Mot de passe</label><br>
+                <label for="password">Mot de passe</label><br>
                 <input type="password" name="mot de passe" id="password-field" v-model="password" ><br>
             </div>
             <button @click.prevent="envoyerDonnées()" class="boutonConnect" type="submit">Se connecter</button>
