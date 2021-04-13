@@ -8,7 +8,9 @@ const con = mysql.createConnection({
   database: 'p7'
 });
 
+
 exports.signup = (req, res,) => {
+ 
   var search = `SELECT 1 FROM users WHERE mail = '${req.body.username}'`;
   con.query(search, function (err, result) {
     if (err) console.log(err)
@@ -16,21 +18,23 @@ exports.signup = (req, res,) => {
       console.log("il y a déjà un utilisateur avec cette adresse mail")
       return res.status(401).json({ error : "Il y a déjà un compte avec cette adresse mail"}) // il faut afficher un message d'erreur
     }
-    
-    else {
-    bcrypt.hash(req.body.password, 10)
-      .then(hash => {
-        var sql = `INSERT INTO users (mail, password) VALUES ('${req.body.username}', '${hash}')`;
-        con.query(sql, function (err, result) {
-          if (err) console.log(err)
-          console.log("Utilisateur crée avec succès")
-          res.status(201).json({message : 'Utilisateur crée avec succès !'})  // il faut afficher la page d'accueil
-        })
-      })
+    if (req.body.password == undefined || req.body.password.length < 8) {  
+      console.log("Au moins 8 caractères pour le mot de passe")
+      return res.status(401).json({ error : "test"}) // il faut au moins 8 caractères
     }
+    bcrypt.hash(req.body.password, 10)
+    .then(hash => {
+      var sql = `INSERT INTO users (mail, password) VALUES ('${req.body.username}', '${hash}')`;
+      con.query(sql, function (err, result) {
+        if (err) console.log(err)
+        console.log("Utilisateur crée avec succès")
+        res.status(201).json({message : 'Utilisateur crée avec succès !'})  // il faut afficher la page d'accueil
+      })
+    })
   }) 
 }
 exports.login = (req, res,) => {
+  var gopassword = `SELECT password FROM users WHERE mail = '${req.body.username}'`;
   var search = `SELECT 1 FROM users WHERE mail = '${req.body.username}'`;
   con.query(search, function (err, result) {
     if (err) console.log(err)
@@ -38,7 +42,6 @@ exports.login = (req, res,) => {
       console.log('utilisateur non trouvé')
       return res.status(401).json({ error: "Cette adresse mail n'est pas dans la base de données !" }); // afficher message d'erreur
     }
-    var gopassword = `SELECT password FROM users WHERE mail = '${req.body.username}'`;
     con.query(gopassword, function (err, resultpass) {
       if (err) console.log(err)
       var pass = resultpass[0].password

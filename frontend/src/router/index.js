@@ -2,7 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Connect from '../views/Connect.vue'
 import Signup from '../views/Signup.vue'
-import Pageprincipale from '../views/Pageprincipale.vue'
+import Accueil from '../views/Accueil.vue'
 
 
 Vue.use(VueRouter)
@@ -20,8 +20,8 @@ const routes = [
   },
   {
     path: '/Accueil',
-    name: 'Pageprincipale',
-    component: Pageprincipale
+    name: 'Accueil',
+    component: Accueil
   }
 ]
 

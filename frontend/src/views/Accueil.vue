@@ -13,7 +13,7 @@ import Corps from '@/components/Corps.vue'
 
 
 export default {
-  name: 'Connect',
+  name: 'Accueil',
   components: {
     Header,
     Corps,

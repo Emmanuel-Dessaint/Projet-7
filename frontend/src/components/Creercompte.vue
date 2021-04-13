@@ -2,22 +2,20 @@
     <div class="div_connexion">
         <h1 class="Connectez">Créer un compte</h1>
 
-        <form class="form" id="login-form">
-            <div class="div_1">
+        <form class="form" id="login-form">       
                 <label for="username">Adresse mail</label><br>
-                <input type="text" name="utilisateur"  id="username-field" v-model="username" ><br>
-            </div>
-            <div class="div_2">
+                <input type="email"  name="utilisateur"  id="username-field" v-model="username" ><br><br>
                 <label for="username">Mot de passe</label><br>
-                <input type="password" name="mot de passe" id="password-field" v-model="password" ><br>
-            </div>
-            <button @click.prevent="envoyerDonnées()" class="boutonConnect" type="submit">Créer un compte</button>
+                <input type="password" pattern=".{8,}" title="Le mot de passe doit contenir au moins 8 caractères" name="mot de passe" id="password-field" v-model="password" ><br>
+                <input @click.prevent="envoyerDonnées()" class="boutonConnect" type="submit" value="Créer un compte"> <!--@click.prevent="envoyerDonnées()" c'est l'ancien bouton-->
+                <!-- <input v-on:click="fonctionTest()" class="boutonTest" type="submit" value="Changer de page"> -->
         </form>   
     </div>
 </template>
 
 <script>
 import axios from 'axios';
+import router from '../router/index.js';
 
 export default {
     name:"Creercompte",
@@ -28,15 +26,18 @@ export default {
                 password:(this.password)
             })
             .then((response) => {
-                console.log(response);
+                console.log(response.data.message);
                 if (response.status === 201) {
-                    console.log("le if a bien marché")
+                    console.log("compte crée")
+                    router.push("/Accueil")
                 }
             }, (error) => {
-                console.log(error);
+                console.log(error);     
             });
-            
         },
+        fonctionTest() {
+
+        }
     },
 }
 </script>

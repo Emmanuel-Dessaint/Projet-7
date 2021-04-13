@@ -18,6 +18,7 @@
 
 <script>
 import axios from 'axios';
+import router from '../router/index.js'
 
 export default {
     name: "Connexion",
@@ -29,6 +30,10 @@ export default {
             })
             .then((response) => {
                 console.log(response);
+                if (response.status === 200) {
+                    console.log("authentification réussie")
+                    router.push("/Accueil")
+                }
             }, (error) => {
                 console.log(error);
             });
