@@ -2,21 +2,21 @@
   <div class="home">
     
     <HeaderPage />
-    <Afficherdiscussions />
+    <Corps />
   </div>
 </template>
 
 <script>
 
 import HeaderPage from '@/components/HeaderPage.vue'
-import Afficherdiscussions from '@/components/Afficherdiscussions.vue'
+import Corps from '@/components/Corps.vue'
 
 
 export default {
-  name: 'Accueil',
+  name: 'CreerDiscussion',
   components: {
     HeaderPage,
-    Afficherdiscussions,
+    Corps,
   }
 }
 </script>

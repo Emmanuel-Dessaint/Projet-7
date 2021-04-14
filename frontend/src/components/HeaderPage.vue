@@ -6,9 +6,9 @@
                     <div class="nomPrenom">Groupomania</div>
                     <div class="menuDeroulant">
                         <!-- <div class="menuprojets">Groupomania</div> -->
-                        <div class="headerPageprincipale"><router-link class="routerLink" to="/Accueil">Page principale</router-link></div>
-                        <div class="headerConnect"><router-link class="routerLink" to="/">Se connecter</router-link></div>
-                        <div class="headerSignup"><router-link class="routerLink" to="/Signup">Créer un compte</router-link></div>
+                        <!-- <div class="headerPageprincipale"><router-link class="routerLink" to="/Accueil">Page principale</router-link></div> -->
+                        <div class="headerConnect"><router-link class="routerLink" to="/CreerDiscussion">Créer une discussion</router-link></div>
+                        <div class="headerSignup"><router-link class="routerLink" to="/Signup">Se déconnecter</router-link></div>
                     </div>
                 </div>            
             </div>
@@ -18,7 +18,7 @@
 
 <script>
 export default {
-    name:"Header"
+    name:"HeaderPage"
 }
 </script>
 

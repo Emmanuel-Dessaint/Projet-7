@@ -2,8 +2,8 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Connect from '../views/Connect.vue'
 import Signup from '../views/Signup.vue'
+import CreerDiscussion from '../views/CreerDiscussion.vue'
 import Accueil from '../views/Accueil.vue'
-
 
 Vue.use(VueRouter)
 
@@ -19,9 +19,14 @@ const routes = [
     component: Signup
   },
   {
+    path: '/CreerDiscussion',
+    name: 'CreerDiscussion',
+    component: CreerDiscussion
+  },
+  {
     path: '/Accueil',
     name: 'Accueil',
-    component: Accueil
+    Component: Accueil
   }
 ]
 

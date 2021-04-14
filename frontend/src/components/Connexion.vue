@@ -32,7 +32,7 @@ export default {
                 console.log(response);
                 if (response.status === 200) {
                     console.log("authentification réussie")
-                    router.push("/Accueil")
+                    router.push("/CreerDiscussion")
                 }
             }, (error) => {
                 console.log(error);

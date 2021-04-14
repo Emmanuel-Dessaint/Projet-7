@@ -3,7 +3,7 @@
     
     <Header />
     <Connexion />
-    {{ message }}
+    
   </div>
 </template>
 

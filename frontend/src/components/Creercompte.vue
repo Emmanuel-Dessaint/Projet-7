@@ -9,6 +9,7 @@
                 <input type="password" pattern=".{8,}" title="Le mot de passe doit contenir au moins 8 caractères" name="mot de passe" id="password-field" v-model="password" ><br>
                 <input @click.prevent="envoyerDonnées()" class="boutonConnect" type="submit" value="Créer un compte"> <!--@click.prevent="envoyerDonnées()" c'est l'ancien bouton-->
                 <!-- <input v-on:click="fonctionTest()" class="boutonTest" type="submit" value="Changer de page"> -->
+
         </form>   
     </div>
 </template>
@@ -27,17 +28,20 @@ export default {
             })
             .then((response) => {
                 console.log(response.data.message);
-                if (response.status === 201) {
-                    console.log("compte crée")
-                    router.push("/Accueil")
+                 if (response.status === 201) {
+                     router.push("/CreerDiscussion")
                 }
+                // if (response.status === 201) {
+                //     router.push("/Accueil")
+                // }
             }, (error) => {
                 console.log(error);     
             });
         },
-        fonctionTest() {
-
-        }
+        // fonctionTest() {
+        //     var search = document.getElementsById('boutonConnect')
+        //     search.addEventListener("click",envoyerDonnées())
+        // }
     },
 }
 </script>
